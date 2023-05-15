@@ -2,6 +2,7 @@
 #Set Up
 - Composer update
 - Composer install
+- php artisan migrate
 
 - npm run dev
 - php artisan serve
