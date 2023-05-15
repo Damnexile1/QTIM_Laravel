@@ -1,5 +1,5 @@
 
-#Set Up
+<h2>Set Up</h2>
 - Composer update
 - Composer install
 - php artisan migrate
