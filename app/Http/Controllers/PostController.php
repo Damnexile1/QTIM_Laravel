@@ -74,11 +74,11 @@ class PostController extends Controller
 //        return redirect()->route('post.index');
     }
 
-    public function restore()
-    {
-        $post = Post::withoutTrashed()->find(2);
-        $post->restore();
-        dd('restored');
-    }
+//     public function restore(Post $post)
+//     {
+//         $post = Post::withoutTrashed()->find($post->id);
+//         $post->restore();
+//         dd('restored');
+//     }
 
 }
