@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,7 +11,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('post.index', compact('posts'));
+//        return view('post.index', compact('posts'));
+        return new JsonResponse($posts);
     }
 
     public function create()
@@ -28,12 +30,15 @@ class PostController extends Controller
         ]);
         Post::create($data);
 
-        return redirect()->route('post.index');
+        return new JsonResponse($data);
+
+//        return redirect()->route('post.index');
     }
 
     public function show(Post $post)
     {
-        return view('post.show', compact('post'));
+//        return view('post.show', compact('post'));
+        return new JsonResponse($post);
     }
 
     public function edit(Post $post)
@@ -50,7 +55,8 @@ class PostController extends Controller
             'image' => 'string',
         ]);
         $post->update($data);
-        return redirect()->route('post.show', $post->id);
+        return new JsonResponse($data);
+//        return redirect()->route('post.show', $post->id);
     }
 
     public function delete()
@@ -63,7 +69,9 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('post.index');
+        $posts = Post::all();
+        return new JsonResponse($posts);
+//        return redirect()->route('post.index');
     }
 
     public function restore()
